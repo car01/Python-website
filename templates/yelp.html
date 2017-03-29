@@ -1,11 +1,45 @@
-
+<!doctype html>
 <html>
 <head>
-    <title> Wather in {{city}} </title>
+<title> Find restaurant search </title>
 </head>
+
+
 <body>
-    <h1> Weather in {{city}} </h1>
-    The weather in {{city}} is <b> {{ desc }} </b> <br />
-    The temperature in {{city}} <b> {{ temp }} </b>
+<style>
+input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}   width: 100%;
+</style>
+	<h1> Restaurants in your area: {{city}} </h1>
+	The restaurants: {{businesses}} is <b> {{ change this }} </b> <br />
+    <p>Type your postcode:</p>
+    <form>
+  <input type="text" name="search" placeholder="Search..">
+</form>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Results</title>	
+<b> Choose your category: </b>
+ <select>
+  <option value="{{fastfood}}">Fastfood</option>
+  <option value="{{italian}}">italian</option>
+  <option value="{{Chinese}}">Chinese</option>
+  <option value="{{british}}">british</option>
+
 </body>
 </html>
