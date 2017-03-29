@@ -1,7 +1,4 @@
-import requests, json, time
-from flask import Flask
-from flask import render_template
-from flask import request
+import yelp
 
 
 def get_search_parameters(lat,long):
@@ -17,11 +14,11 @@ def get_search_parameters(lat,long):
 def get_results(params):
  
   #Obtain these from Yelp's manage access page
-  consumer_key = "iSH3hBJx1Ij7TRwVnGzYCg"
-  consumer_secret = "1h0M4HbgwNQQfu0MBj-QrT8Buho"
-  token = "JI210sOcR0HTa4QEWAZcxRnqXNU9SfKO"
-  token_secret = "oPOACj_tuslalhGhBZAHJ-182aQ"
-   
+  yelp_api = yelp.Api(consumer_key='iSH3hBJx1Ij7TRwVnGzYCg',
+                    consumer_secret='1h0M4HbgwNQQfu0MBj-QrT8Buho',
+                    access_token_key='JI210sOcR0HTa4QEWAZcxRnqXNU9SfKO',
+                    access_token_secret='oPOACj_tuslalhGhBZAHJ-182aQ')
+
   session = rauth.OAuth1Session(
     consumer_key = consumer_key
     ,consumer_secret = consumer_secret
@@ -34,11 +31,4 @@ def get_results(params):
   data = request.json()
   session.close()
 
-  return data
-
-app = Flask("MyApp")
-
-@app.route("/")
-def yelp():
-    return render_template("yelp.html")
-app.run()
+  
