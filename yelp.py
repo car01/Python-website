@@ -1,3 +1,9 @@
+import requests, json, time
+from flask import Flask
+from flask import render_template
+from flask import request
+
+
 def get_search_parameters(lat,long):
   #See the Yelp API for more details
   params = {}
@@ -8,7 +14,7 @@ def get_search_parameters(lat,long):
  
   return params
 
-  def get_results(params):
+def get_results(params):
  
   #Obtain these from Yelp's manage access page
   consumer_key = "iSH3hBJx1Ij7TRwVnGzYCg"
@@ -27,5 +33,12 @@ def get_search_parameters(lat,long):
   #Transforms the JSON API response into a Python dictionary
   data = request.json()
   session.close()
-   
+
   return data
+
+app = Flask("MyApp")
+
+@app.route("/")
+def yelp():
+    return render_template("yelp.html")
+app.run()
