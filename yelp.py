@@ -1,6 +1,3 @@
-import yelp
-
-
 def get_search_parameters(lat,long):
   #See the Yelp API for more details
   params = {}
@@ -11,14 +8,14 @@ def get_search_parameters(lat,long):
  
   return params
 
-def get_results(params):
+  def get_results(params):
  
   #Obtain these from Yelp's manage access page
-  yelp_api = yelp.Api(consumer_key='iSH3hBJx1Ij7TRwVnGzYCg',
-                    consumer_secret='1h0M4HbgwNQQfu0MBj-QrT8Buho',
-                    access_token_key='JI210sOcR0HTa4QEWAZcxRnqXNU9SfKO',
-                    access_token_secret='oPOACj_tuslalhGhBZAHJ-182aQ')
-
+  consumer_key = "iSH3hBJx1Ij7TRwVnGzYCg" 
+  consumer_secret = "1h0M4HbgwNQQfu0MBj-QrT8Buho"
+  token = "JI210sOcR0HTa4QEWAZcxRnqXNU9SfKO"
+  token_secret = "oPOACj_tuslalhGhBZAHJ-182aQ"
+   
   session = rauth.OAuth1Session(
     consumer_key = consumer_key
     ,consumer_secret = consumer_secret
@@ -30,5 +27,5 @@ def get_results(params):
   #Transforms the JSON API response into a Python dictionary
   data = request.json()
   session.close()
-
-  
+   
+  return data
