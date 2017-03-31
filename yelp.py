@@ -43,10 +43,11 @@ def main():
 	api_calls.append(get_results(params))
 	#Be a good internet citizen and rate-limit yourself
 	time.sleep(1.0)
-	print "Name: "#+name
-	print "Rating: "#+rating_img_url
-	print "Telephone: "#+display_phone
-	print "Address: "#+display_address
+	
+	print "Name" + Name
+	#print "Rating: " + 'rating_img_url'
+	#print "Telephone: " + 'display_phone'
+	#print "Address: " + 'display_address'
 
      
 if __name__=="__main__":
