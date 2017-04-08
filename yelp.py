@@ -1,4 +1,3 @@
-
 import rauth, time, json
 
 
@@ -13,6 +12,14 @@ def get_search_parameters(postcode, category):
 	params["limit"] = "1"
 
 	return params
+def make_api_calll(offset):
+	return request.json()
+
+def load_all_data():
+	data = []
+	while make_api_calll(offset)['name']:
+		name = "Name" + name
+
 
 def get_results(params):
 	consumer_key = "iSH3hBJx1Ij7TRwVnGzYCg"
@@ -30,7 +37,9 @@ def get_results(params):
 
 	#Transforms the JSON API response into a Python dictionary
 	data = request.json()
+
 	session.close()
+	
 
 	return data
 
@@ -44,10 +53,12 @@ def main():
 	api_calls.append(get_results(params))
 	#Be a good internet citizen and rate-limit yourself
 	time.sleep(1.0)
+
+	#print api_calls
 	
-	print "Name" + Name
+	#print "Name" + name
 	#print "Rating: " + 'rating_img_url'
-	#print "Telephone: " + 'display_phone'
+	#print "Telephone: " + display_phone
 	#print "Address: " + 'display_address'
 
      
