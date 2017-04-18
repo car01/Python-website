@@ -9,7 +9,7 @@ def get_search_parameters(postcode, category):
 	params["location"] = postcode
 	params["radius_filter"] = "2000"
 	params["category_filter"] = category
-	params["limit"] = "1"
+	params["limit"] = "5"
 
 	return params
 def make_api_calll(offset):
@@ -54,9 +54,11 @@ def main():
 	#Be a good internet citizen and rate-limit yourself
 	time.sleep(1.0)
 
-	#print api_calls
-	
-	#print "Name" + name
+name = api_calls[0]['businesses'][0]['name']
+for name in range(0,4):
+	print "Name %d." % name
+	element.append(name)
+	#print "Name " + name
 	#print "Rating: " + 'rating_img_url'
 	#print "Telephone: " + display_phone
 	#print "Address: " + 'display_address'
