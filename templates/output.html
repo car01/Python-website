@@ -2,16 +2,27 @@
 <html>
 
 <head>
-<title> Results </title> 
+	<title> Results </title> 
 </head>
 <body>
 <h1> Your results: </h1>
-<b>Name </b>
-<br>
-<img src="https://s3-media4.fl.yelpcdn.com/assets/2/www/img/04ae5eda5622/ico/stars/v1/stars_0.png" alt="rating";">
-<br>
-<b> Telephone number: </b>
-<br>
-<b> Address: <b>
+{% if error == 0 %}
+	{% for item in result %}
+		<b>Name: {{ item[0] }} </b>
+		<br>
+		<img src="{{ item[1] }}" alt="rating";">
+		<br>
+		<b> Telephone number: {{ item[2] }} </b>
+		<br>
+		<b> Address: {{ item[3] }}</b>
+		<br>
+		<br>
+	{% endfor %} 
+{% else %}
+ 	<b> wrong postcode </b>
+{% endif %}
+
+  <br>
+
 </body>
 </html>

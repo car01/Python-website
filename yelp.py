@@ -11,36 +11,58 @@ def front_page():
 
 @app.route("/search", methods=['POST'])
 def sign_up():
+	allResults = []
 	form_data = request.form
-	print form_data["cuisine"]
+	
+
 	locations = form_data['postcode']
 	category = form_data['cuisine']
 	api_calls = []
 	#for lat,long in locations:
 	params = get_search_parameters(locations, category)
 	api_calls.append(get_results(params))
-	print len(api_calls)
+	
 	#Be a good internet citizen and rate-limit yourself
 	time.sleep(1.0)
-	print 'error' in api_calls
-	if 'error' in api_calls:
+	error = 0
+	print api_calls
+	print 'error' in api_calls[0]
+	if 'error' in api_calls[0]:
 		print "No address"
+		error = 1
 	else:
-		#print api_calls
+		
 		numFound = int(api_calls[0]['total'])
+		if numFound == 0:
+			error=1
 		print numFound
+		if numFound > 5:
+			numFound = 5
 		for i in range(0,numFound):
+			#print api_calls
+			thisResult = []
+			address = ""
 			name = api_calls[0]['businesses'][i]['name']
 			print "Name %s." % name
-			phone = api_calls[0]['businesses'][i]['display_phone']
-			print "Phone number: %s" % phone
-			address = api_calls[0]['businesses'][i]['location']['display_address']
-			for g in range(0,len(address)):
-				print "Address: %s" % address[g]
+			if 'display_phone' in api_calls[0]['businesses'][i]:
+				phone = api_calls[0]['businesses'][i]['display_phone']
+			else:
+				phone= "+00 000 00000"
+			#print "Phone number: %s" % phone
+			addr = api_calls[0]['businesses'][i]['location']['display_address']
+			for g in range(0,len(addr)):
+				address = address + addr[g] + ", "
+				#print "Address: %s" % address[g]
 			rating = api_calls[0]['businesses'][i]['rating_img_url']
-			print rating
-
-	return "All OK"
+			#print rating
+			thisResult.append(name)
+			thisResult.append(rating)
+			thisResult.append(phone)
+			thisResult.append(address)
+			print thisResult
+			allResults.append(thisResult)
+		print allResults
+	return render_template("output.html", result=allResults,error=error)
 
 
 def get_search_parameters(postcode, category):
