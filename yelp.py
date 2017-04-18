@@ -1,5 +1,7 @@
 import rauth, time, json
-
+from flask import Flask
+from flask import render_template
+from flask import request
 
 def get_search_parameters(postcode, category):
 	#See the Yelp API for more details
@@ -42,7 +44,9 @@ def get_results(params):
 	
 
 	return data
+app = Flask("MyApp")
 
+@app.route("/")
 def main():
 	locations = raw_input()
 	category = raw_input()
@@ -51,13 +55,26 @@ def main():
 	#for lat,long in locations:
 	params = get_search_parameters(locations, category)
 	api_calls.append(get_results(params))
+	print len(api_calls)
 	#Be a good internet citizen and rate-limit yourself
 	time.sleep(1.0)
-
-name = api_calls[0]['businesses'][0]['name']
-for name in range(0,4):
-	print "Name %d." % name
-	element.append(name)
+	if api_calls[0]['error']:
+		print "No address"
+	else:
+		#print api_calls
+		numFound = int(api_calls[0]['total'])
+		for i in range(0,numFound):
+			name = api_calls[0]['businesses'][i]['name']
+			print "Name %s." % name
+			phone = api_calls[0]['businesses'][i]['display_phone']
+			print "Phone number: %s" % phone
+			address = api_calls[0]['businesses'][i]['location']['display_address']
+			for g in range(0,len(address)):
+				print "Address: %s" % address[g]
+			rating = api_calls[0]['businesses'][i]['rating_img_url']
+			return render_template("yelp.html")
+app.run()
+	#rating = api_calls[0]['businesses'][0]['rating_img_url']
 	#print "Name " + name
 	#print "Rating: " + 'rating_img_url'
 	#print "Telephone: " + display_phone

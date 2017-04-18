@@ -7,6 +7,13 @@
 
 <body>
 <style>
+body{
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1c/Island_Shangri-La%2C_Hong_Kong_-_Restaurant_Petrus.png)
+}
+</style>
+<style>
+
+
 input[type=text] {
     width: 130px;
     box-sizing: border-box;
@@ -26,16 +33,24 @@ input[type=text]:focus {
     width: 100%;
 }   width: 100%;
 </style>
-	<h1> Restaurants in your area: {{city}} </h1>
-	The restaurants: {{businesses}} is <b> {{ change this }} </b> <br />
-    <p>Type your postcode:</p>
+    <h1 align="center"> Restaurants in your area  </h1>
+    <center>
     <form>
-  <input type="text" name="search" placeholder="Search..">
+  <input  type="text" name="postcode" placeholder="Postcode">
+
+ <select name="cuisine">
+ <option value = "">Select Cuisine</option>
+  <option value="african">African</option>
+  <option value="tradamerican">American</option>
+  <option value="chinese">Chinese</option>
+  <option value="british">British</option>
+  <option value="italian">Italian</option>
+  <option value="burgers">Burgers</option>
+  <option value="cafes">Cafes</option>
+  </select>
+<br>
+<input  type="submit" /> 
 </form>
-<html>
-<form action="results.php">
-<input type="submit" />
-</form>
-<li><a href="categories.html"></a></li>
+</center>
 </body>
 </html>
