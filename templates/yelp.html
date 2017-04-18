@@ -1,18 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+<title>Restaurants</title>
 <head>
-<title> Find restaurant search </title>
-
 <style>
 body{
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1c/Island_Shangri-La%2C_Hong_Kong_-_Restaurant_Petrus.png)
-}
+    background-image: url(https://c1.staticflickr.com/4/3626/3637343338_cf1b381fc4_b.jpg)
+ }
 </style>
+</head>
 <style>
-
-
 input[type=text] {
-    width: 130px;
+    width: 140px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -31,23 +29,45 @@ input[type=text]:focus {
 }   width: 100%;
 </style>
 </head>
-<body>
-    <h1 align="center"> Restaurants in your area  </h1>
-    <center>
-    <form method="post" action="/search">
-  <input  type="text" name="postcode" placeholder="Postcode">
 
- <select name="cuisine">
-  <option value="african">African</option>
-  <option value="tradamerican">American</option>
-  <option value="chinese">Chinese</option>
-  <option value="british">British</option>
-  <option value="italian">Italian</option>
-  <option value="burgers">Burgers</option>
-  <option value="cafes">Cafes</option>
+<body>
+<style>
+  .bordered {
+    width: 300px;
+    height: 300px;
+    padding: 200x;
+    border: 3px solid DARKRED;
+    background: DARKRED;
+  }
+</style>
+<div class="bordered">
+   <h1 align="center" > <font color="FDEDEC"><b> <font size="18"> Restaurants in your area </font> </b> </font>  </h1>
+   <center>
+    <style>
+    body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) }
+  </style>
+    <form method="post" action="/search">
+  <input  type="text" name="postcode" placeholder="Postcode" align="center">
+<br>
+
+ <select class="selectpicker" data-style="btn-primary">
+  
+   <option value="african">African</option>
+    <option value="tradamerican">American</option>
+    <option value="chinese">Chinese</option>
+    <option value="british">British</option>
+    <option value="italian">Italian</option>
+    <option value="burgers">Burgers</option>
+    <option value="cafes">Cafes</option>
   </select>
 <br>
 <input  type="submit" /> 
+</div>
 </form>
 </center>
 </body>
