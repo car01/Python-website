@@ -2,10 +2,7 @@
 <html>
 <head>
 <title> Find restaurant search </title>
-</head>
 
-
-<body>
 <style>
 body{
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1c/Island_Shangri-La%2C_Hong_Kong_-_Restaurant_Petrus.png)
@@ -33,13 +30,14 @@ input[type=text]:focus {
     width: 100%;
 }   width: 100%;
 </style>
+</head>
+<body>
     <h1 align="center"> Restaurants in your area  </h1>
     <center>
-    <form>
+    <form method="post" action="/search">
   <input  type="text" name="postcode" placeholder="Postcode">
 
  <select name="cuisine">
- <option value = "">Select Cuisine</option>
   <option value="african">African</option>
   <option value="tradamerican">American</option>
   <option value="chinese">Chinese</option>
