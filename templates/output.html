@@ -23,20 +23,19 @@ background-image: url(https://c1.staticflickr.com/4/3626/3637343338_cf1b381fc4_b
 </style>
 <div class="bordered">
 <h1 align="center"> <font color="FDEDEC"><b> <font size="18"> Your results: </font> </b> </font> </h1>
-<center>
     <style>
     body {
         position: absolute;
-        top: 30%;
+        top: 50%;
         left: 50%;
         margin-right: -50%;
         transform: translate(-50%, -50%) }
   </style>
 {% if error == 0 %}
 	{% for item in result %}
-		<b>Name: {{ item[0] }} </b>
+		<b> Name: {{ item[0] }}</b>
 		<br>
-		<img src="{{ item[1] }}" alt="rating";">
+		<b> Rating: </b> <img src="{{ item[1] }}" alt="rating";">
 		<br>
 		<b> Telephone number: {{ item[2] }} </b>
 		<br>
@@ -49,6 +48,5 @@ background-image: url(https://c1.staticflickr.com/4/3626/3637343338_cf1b381fc4_b
 {% endif %}
 
   <br>
-</center>
 </body>
 </html>
