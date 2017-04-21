@@ -2,10 +2,36 @@
 <html>
 
 <head>
-	<title> Results </title> 
+	<title> Results </title>
+<style>
+body{
+background-image: url(https://c1.staticflickr.com/4/3626/3637343338_cf1b381fc4_b.jpg)
+}
+
+</style> 
 </head>
+
 <body>
-<h1> Your results: </h1>
+<style>
+  .bordered {
+    width: 300px;
+    height: 500px;
+    padding: 200x;
+    border: 3px solid DARKRED;
+    background: DARKRED;
+  }
+</style>
+<div class="bordered">
+<h1 align="center"> <font color="FDEDEC"><b> <font size="18"> Your results: </font> </b> </font> </h1>
+<center>
+    <style>
+    body {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) }
+  </style>
 {% if error == 0 %}
 	{% for item in result %}
 		<b>Name: {{ item[0] }} </b>
@@ -23,6 +49,6 @@
 {% endif %}
 
   <br>
-
+</center>
 </body>
 </html>
