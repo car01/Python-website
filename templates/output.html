@@ -31,6 +31,7 @@ background-image: url(https://c1.staticflickr.com/4/3626/3637343338_cf1b381fc4_b
         margin-right: -50%;
         transform: translate(-50%, -50%) }
   </style>
+  <div>
 {% if error == 0 %}
 	{% for item in result %}
 		<b> Name: {{ item[0] }}</b>
@@ -46,7 +47,7 @@ background-image: url(https://c1.staticflickr.com/4/3626/3637343338_cf1b381fc4_b
 {% else %}
  	<b> wrong postcode </b>
 {% endif %}
-
+</div>
   <br>
 </body>
 </html>
